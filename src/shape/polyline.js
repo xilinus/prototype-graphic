@@ -11,18 +11,12 @@ Class: Graphic.Polyline
   See Also:
     <Shape>
 */
-Graphic.Polyline = Class.create();
-Object.extend(Graphic.Polyline.prototype, Graphic.Shape.prototype);
-// Keep parent initialize
-Graphic.Polyline.prototype._parentInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Polyline.prototype, {
-  initialize: function(renderer, type) {  
-    this._parentInitialize(renderer, type || "polyline");
+Graphic.Polyline = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer, type) {    
+    $super(renderer, type || "polyline");
     Object.extend(this.attributes, {x:0, y:0, w:0, h:0});
 
-    this.points = new Array();
-    return this;
+    this.points = [ ];
   },
   
   addPoints: function(points) {
@@ -135,4 +129,4 @@ Object.extend(Graphic.Polyline.prototype, {
     this._updateBounds();
     this._setAttribute("points", path);
   }
-})
+});

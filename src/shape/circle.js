@@ -11,16 +11,10 @@ Class: Graphic.Circle
   See Also:
     <Shape>
 */
-Graphic.Circle = Class.create();
-Object.extend(Graphic.Circle.prototype, Graphic.Shape.prototype);
-// Keep parent initialize
-Graphic.Circle.prototype._parentInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Circle.prototype, {
-  initialize: function(renderer) {    
-    this._parentInitialize(renderer, "circle");
+Graphic.Circle = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "circle");
     Object.extend(this.attributes, {cx: 0, cy: 0, r: 0})
-    return this;
   },
 
   getSize: function() {
@@ -60,5 +54,4 @@ Object.extend(Graphic.Circle.prototype, {
   getRadius: function() {
     return this.attributes.r;
   }
-  
-})
+});

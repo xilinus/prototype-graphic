@@ -10,8 +10,7 @@ Class: Graphic.Shape
   License:
   	MIT-style license.
 */
-Graphic.Shape = Class.create();
-Object.extend(Graphic.Shape.prototype, {
+Graphic.Shape = Class.create({
   // Group: Implemented Functions
 
   /*
@@ -39,7 +38,6 @@ Object.extend(Graphic.Shape.prototype, {
     // No stroke, no fill by default  
     this.setStroke(null);
     this.setFill(null);
-    return this;
   },
   
   /*
@@ -602,4 +600,4 @@ Object.extend(Graphic.Shape.prototype, {
     this._setAttributes({matrix: this.matrix.values().join(","), invmatrix: this.inverseMatrix.values().join(",")}); 
     this.renderer.updateTransform(this);
   }
-})
+});

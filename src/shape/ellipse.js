@@ -11,16 +11,10 @@ Class: Graphic.Ellipse
   See Also:
     <Shape>
 */
-Graphic.Ellipse = Class.create();
-Object.extend(Graphic.Ellipse.prototype, Graphic.Shape.prototype);
-// Keep parent initialize
-Graphic.Ellipse.prototype._shapeInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Ellipse.prototype, {
-  initialize: function(renderer) {
-    this._shapeInitialize(renderer, "ellipse");   
+Graphic.Ellipse = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "ellipse");   
     Object.extend(this.attributes, {cx: 0, cy: 0, rx: 0, ry: 0})
-    return this;
   },
   
   getSize: function() {
@@ -42,4 +36,4 @@ Object.extend(Graphic.Ellipse.prototype, {
     this._setAttributes({cx: x + this.attributes.rx, cy: y + this.attributes.ry});
     return this;
   }
-})
+});

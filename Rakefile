@@ -66,7 +66,7 @@ task :distrib do
   system "bin/jsmin.rb < " + File.join(PKG_DESTINATION, PKG_NICKNAME + "-renderer.js") + " > " + File.join(PKG_DESTINATION, PKG_NICKNAME + "-renderer-min.js")
 end
 
-require 'test/assets/javascripttest'
+require 'test/assets/jstest'
 desc "Runs all the JavaScript unit tests and collects the results"
 JavaScriptTestTask.new(:unittest) do |t|
   t.mount("/lib")

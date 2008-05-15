@@ -14,9 +14,7 @@ Class: Graphic.DrawingTool
   See Also:
     <Tool>, <EventNotifier>
 */
-Graphic.DrawingTool = Class.create();
-Object.extend(Graphic.DrawingTool.prototype, Graphic.Tool.prototype);
-Object.extend(Graphic.DrawingTool.prototype, {
+Graphic.DrawingTool = Class.create(Graphic.Tool, {
   initialize: function() {  
     this.renderer = null;
     this.shape    = null;

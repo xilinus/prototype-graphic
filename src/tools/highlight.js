@@ -13,9 +13,7 @@ Class: Graphic.HighlightTool
   See Also:
     <Tool>, <EventNotifier>
 */
-Graphic.HighlightTool = Class.create();
-Object.extend(Graphic.HighlightTool.prototype, Graphic.Tool.prototype);
-Object.extend(Graphic.HighlightTool.prototype, {
+Graphic.HighlightTool = Class.create(Graphic.Tool, {
   /*
     Function: initialize
       creates the current tool

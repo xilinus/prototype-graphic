@@ -49,30 +49,30 @@ li {
   margin-bottom: 2em;
 }
 
-#logsummary {
+.logsummary {
   margin-bottom: 1em;
   padding: 1ex;
   border: 1px solid #000;
   font-weight: bold;
 }
 
-#logtable {
+.logtable {
   width: 100%;
   border-collapse: collapse;
   border: 1px dotted #666;
 }
 
-#logtable td, #logtable th {
+.logtable td, .logtable th {
   text-align: left;
   padding: 3px 8px;
   border: 1px dotted #666;
 }
 
-#logtable .passed {
+.logtable .passed {
   background-color: #cfc;
 }
 
-#logtable .failed, #logtable .error {
+.logtable .failed, .logtable .error {
   background-color: #fcc;
 }
 
@@ -81,4 +81,29 @@ li {
   width: 700px; 
   text-align: center; 
   color: #aaa; 
+}      
+
+#info {
+  position:fixed;
+  top:0;
+  left:0;
+  background:#F66;
+  height:20px;
+  line-height:20px;
+  text-align: center;
+  color:#FFF;
+  z-index: 100000;
+  padding:5px;
+	filter:alpha(opacity=60);
+	opacity: 0.6;
+	-moz-opacity: 0.6;
+}               
+
+.failure {
+  background:#F00 !important;
 }
+         
+.success {
+  background:#008040 !important;
+}
+

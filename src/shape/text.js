@@ -11,16 +11,10 @@ Class: Graphic.Text
   See Also:
     <Shape>
 */
-Graphic.Text = Class.create();
-Object.extend(Graphic.Text.prototype, Graphic.Shape.prototype);
-// Keep parent initialize
-Graphic.Text.prototype._parentInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Text.prototype, {
-  initialize: function(renderer) {    
-    this._parentInitialize(renderer, "text");
+Graphic.Text = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "text");
     Object.extend(this.attributes, {x: 0, y: 0, 'font-size': '10', 'font-family': 'Veranda', 'font-weight': 'normal'});
-    return this;
   },
 
   getSize: function() {
@@ -62,4 +56,4 @@ Object.extend(Graphic.Text.prototype, {
 	  this.renderer.addText(this, textValue);
 	  return this;
   }
-})
+});

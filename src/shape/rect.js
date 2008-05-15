@@ -8,20 +8,10 @@ Class: Graphic.Rectangle
   License:
   	MIT-style license.
 */
-Graphic.Rectangle = Class.create();
-Object.extend(Graphic.Rectangle.prototype, Graphic.Shape.prototype);
-
-// Keep parent initialize
-Graphic.Rectangle.prototype._shapeInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Rectangle.prototype, {
-  // Group: Shape functions
-  // See Also:
-  // <Shape>
-  initialize: function(renderer) {
-    this._shapeInitialize(renderer, "rect");
+Graphic.Rectangle = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "rect");
     Object.extend(this.attributes, {x:0, y:0, w:0, h:0, rx: 0, ry: 0});
-    return this;
   },
     
   getSize: function() {        
@@ -73,4 +63,4 @@ Object.extend(Graphic.Rectangle.prototype, {
   getRoundCorner: function(rx, ry) {
     return  {rx: this.attributes.rx, ry: this.attributes.ry}
   }
-})
+});

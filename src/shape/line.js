@@ -11,15 +11,9 @@ Class: Graphic.Line
   See Also:
     <Shape>
 */
-Graphic.Line = Class.create();
-Object.extend(Graphic.Line.prototype, Graphic.Shape.prototype);
-// Keep parent initialize
-Graphic.Line.prototype._parentInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Line.prototype, {
-  initialize: function(renderer) {
-    this._parentInitialize(renderer, "line");
-    return this;
+Graphic.Line = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "line");
   },
   
   getSize: function() {    
@@ -51,4 +45,4 @@ Object.extend(Graphic.Line.prototype, {
     else
       return {x: this.attributes.x2, y:this.attributes.y2}
   }
-})
+});

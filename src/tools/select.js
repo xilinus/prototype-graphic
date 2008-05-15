@@ -14,9 +14,7 @@ Class: Graphic.SelectTool
   See Also:
     <Tool>, <EventNotifier>
 */
-Graphic.SelectTool = Class.create();
-Object.extend(Graphic.SelectTool.prototype, Graphic.Tool.prototype);
-Object.extend(Graphic.SelectTool.prototype, {
+Graphic.SelectTool = Class.create(Graphic.Tool, {
   initialize: function() {  
     this.renderer = null;
     this.shape    = null;

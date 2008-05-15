@@ -8,17 +8,10 @@ Class: Graphic.Image
   License:
   	MIT-style license.
 */
-Graphic.Image = Class.create();
-Object.extend(Graphic.Image.prototype, Graphic.Rectangle.prototype);
-
-// Keep parent initialize
-Graphic.Image.prototype._shapeInitialize = Graphic.Shape.prototype.initialize;
-
-Object.extend(Graphic.Image.prototype, {
-  initialize: function(renderer, image) {
-    this._shapeInitialize(renderer, "image");
+Graphic.Image = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "image");
     Object.extend(this.attributes, {x:0, y:0, width:0, height:0});
-    return this;
   },
   
   // Group: Specific Image Functions

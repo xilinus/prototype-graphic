@@ -11,18 +11,10 @@ Class: Graphic.Group
   See Also:
     <Shape>
 */
-Graphic.Group = Class.create();
-Object.extend(Graphic.Group.prototype, Graphic.Shape.prototype);
-// Keep parent initialize
-Graphic.Group.prototype._parentInitialize = Graphic.Shape.prototype.initialize;
-Graphic.Group.prototype._parentPostTransform = Graphic.Shape.prototype.postTransform;
-Graphic.Group.prototype._parentPreTransform = Graphic.Shape.prototype.preTransform;
-
-Object.extend(Graphic.Group.prototype, {
-  initialize: function(renderer) {    
-    this._parentInitialize(renderer, "g"); 
-    this.children = new Array();
-    return this;
+Graphic.Group = Class.create(Graphic.Shape, {
+  initialize: function($super, renderer) {    
+    $super(renderer, "g");
+    this.children = [ ];
   },
 
   destroy: function() {
@@ -97,8 +89,8 @@ Object.extend(Graphic.Group.prototype, {
     return {x: xmin, y: ymin};
   },
   
-  postTransform: function(matrix) {
-    this._parentPostTransform(matrix);
+  postTransform: function($super, matrix) {
+    $super(matrix);
 
     this.children.each(function(shape) {
       shape.postTransform(matrix);
@@ -106,8 +98,8 @@ Object.extend(Graphic.Group.prototype, {
     return this;
   },
   
-  preTransform: function(matrix) {
-    this._parentPreTransform(matrix);
+  preTransform: function($super, matrix) {
+    $super(matrix);
 
     this.children.each(function(shape) {
       shape.preTransform(matrix);
@@ -122,4 +114,4 @@ Object.extend(Graphic.Group.prototype, {
   findAll:function(shapeType) {
     return this.children.findAll( function(s) { return s.getType() == shapeType });
   }  
-})
+});

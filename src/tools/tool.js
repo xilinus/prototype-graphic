@@ -13,8 +13,7 @@ Class: Graphic.Tool
   See Also:
     <ToolManager>
 */
-Graphic.Tool = Class.create();
-Graphic.Tool.prototype = { 
+Graphic.Tool = Class.create({ 
   /*
     Function: activate
       Activates the current tool
@@ -163,4 +162,4 @@ Graphic.Tool.prototype = {
 
   */
   mouseOut: function(event) {}
-}
+});

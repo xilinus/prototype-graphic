@@ -11,14 +11,8 @@ Class: Graphic.Polygon
   See Also:
     <Shape>
 */
-Graphic.Polygon = Class.create();
-Object.extend(Graphic.Polygon.prototype, Graphic.Polyline.prototype);
-// Keep parent initialize
-Graphic.Polygon.prototype._polylineInitialize = Graphic.Polyline.prototype.initialize;
-
-Object.extend(Graphic.Polygon.prototype, {
-  initialize: function(renderer) {
-    this._polylineInitialize(renderer, "polygon");
-    return this;
+Graphic.Polygon = Class.create(Graphic.Polyline, {
+  initialize: function($super, renderer) {
+    $super(renderer, "polygon");
   }
-})
+});

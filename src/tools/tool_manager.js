@@ -12,8 +12,7 @@ Class: Graphic.ToolManager
   See Also:
     <Tool>
 */
-Graphic.ToolManager = Class.create();
-Graphic.ToolManager.prototype = {    
+Graphic.ToolManager = Class.create({    
   initialize: function(renderer) {
     this.renderer = renderer;
     this.element = renderer.element.parentNode;
@@ -229,5 +228,5 @@ Graphic.ToolManager.prototype = {
       y = this.dimension.height;   
     return y;
   }
-}
+});
 
