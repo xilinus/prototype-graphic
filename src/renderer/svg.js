@@ -12,11 +12,6 @@ Class: Graphic.SVGRenderer
 */
 
 //
-// Graphic.SVGRenderer render class. 
-//
-Graphic.SVGRenderer = Class.create();
-
-//
 // Graphic.SVGRenderer "static" data and functions
 //
 Object.extend(Graphic.SVGRenderer, {
@@ -28,16 +23,14 @@ Object.extend(Graphic.SVGRenderer, {
   createNode:  function(nodeName) {
     return document.createElementNS(Graphic.SVGRenderer.xmlns.svg, nodeName);;
   }
-})
+});
 
-Object.extend(Graphic.SVGRenderer.prototype, Graphic.AbstractRender.prototype);
-// Keep parent initialize
-Graphic.SVGRenderer.prototype._parentInitialize = Graphic.AbstractRender.prototype.initialize; 
-Graphic.SVGRenderer.prototype._parentSetSize = Graphic.AbstractRender.prototype.setSize; 
-
-Object.extend(Graphic.SVGRenderer.prototype, {
-  initialize: function(element) {
-    this._parentInitialize(element);
+//
+// Graphic.SVGRenderer render class. 
+//
+Graphic.SVGRenderer = Class.create(Graphic.AbstractRenderer, {
+  initialize: function($super, element) {
+    $super(element);
     this.element = Graphic.SVGRenderer.createNode("svg");  
     
     this.element.setAttribute("width", this.bounds.w);
@@ -61,8 +54,8 @@ Object.extend(Graphic.SVGRenderer.prototype, {
     this.element.parentNode.removeChild(this.element);
   },
   
-  setSize: function(width, height) { 
-    this._parentSetSize(width, height);
+  setSize: function($super, width, height) { 
+    $super(width, height);
     this.element.setAttribute("width", this.bounds.w);
     this.element.setAttribute("height", this.bounds.h);      
     this.zoom(this.viewing.sx, this.viewing.sy)

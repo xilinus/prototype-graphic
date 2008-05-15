@@ -9,8 +9,7 @@ Class: Graphic.AbstractRender
   Author:
   	Sébastien Gruhier, <http://www.xilinus.com>
 */
-Graphic.AbstractRender = Class.create();
-Graphic.AbstractRender.prototype = {
+Graphic.AbstractRender = Class.create({
   /*
     Function: initialize
       Constructor. 
@@ -23,8 +22,7 @@ Graphic.AbstractRender.prototype = {
 
     this.viewing = {tx:0, ty: 0, sx: 1, sy:1, cx: dimension.width/2, cy: dimension.height/2};   
     this._setViewMatrix();
-    this.bounds  = {x: 0, y:0, w: dimension.width, h: dimension.height};                        
-    return this;
+    this.bounds  = {x: 0, y:0, w: dimension.width, h: dimension.height};
   },
      
   
@@ -332,4 +330,4 @@ Graphic.AbstractRender.prototype = {
   addText: function(shape, text)     {console.log("Graphic.AbstractRender:addText")},
   
   _setViewing: function()            {console.log("Graphic.AbstractRender:_setViewing")}   
-}
+});

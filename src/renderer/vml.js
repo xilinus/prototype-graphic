@@ -12,11 +12,6 @@ Class: Graphic.VMLRenderer
 */
 
 //
-// Graphic.VMLRenderer render class. 
-//
-Graphic.VMLRenderer = Class.create();
-
-//
 // Graphic.VMLRenderer "static" data and functions
 //
 Object.extend(Graphic.VMLRenderer, {
@@ -41,15 +36,14 @@ Object.extend(Graphic.VMLRenderer, {
   }
 })
 
-Object.extend(Graphic.VMLRenderer.prototype, Graphic.AbstractRender.prototype);
-Graphic.VMLRenderer.prototype._parentInitialize = Graphic.AbstractRender.prototype.initialize; 
-Graphic.VMLRenderer.prototype._parentSetSize = Graphic.AbstractRender.prototype.setSize; 
-
-Object.extend(Graphic.VMLRenderer.prototype, {
-  initialize: function(element) {
+//
+// Graphic.VMLRenderer render class. 
+//
+Graphic.VMLRenderer = Class.create({
+  initialize: function($super, element) {
     Graphic.VMLRenderer.initBrowser();
     
-    this._parentInitialize(element);
+    $super(element);
     
     this.element = Graphic.VMLRenderer.createNode("v:group");
     this.element.style.height = this.bounds.h + "px";   
@@ -72,8 +66,8 @@ Object.extend(Graphic.VMLRenderer.prototype, {
     this.element.parentNode.removeChild(this.element);
   },
   
-  setSize: function(width, height) { 
-    this._parentSetSize(width, height);
+  setSize: function($super, width, height) { 
+    $super(width, height);
     this.element.style.height = this.bounds.h + "px";   
     this.element.style.width  = this.bounds.w + "px";    
     this.zoom(this.viewing.sx, this.viewing.sy)

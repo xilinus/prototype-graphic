@@ -15,16 +15,9 @@ Class: Graphic.CanvasRenderer
 //
 // Graphic.CanvasRenderer render class. 
 //
-Graphic.CanvasRenderer = Class.create();
-Object.extend(Graphic.CanvasRenderer.prototype, Graphic.AbstractRender.prototype);
-
-// Keep parent initialize
-Graphic.CanvasRenderer.prototype._parentInitialize = Graphic.AbstractRender.prototype.initialize;
-Graphic.CanvasRenderer.prototype._parentSetSize = Graphic.AbstractRender.prototype.setSize; 
- 
-Object.extend(Graphic.CanvasRenderer.prototype, {
-  initialize: function(element) {
-    this._parentInitialize(element);
+Graphic.CanvasRenderer = Class.create(Graphic.AbstractRenderer, {
+  initialize: function($super, element) {
+    $super(element);
    
     this.element = document.createElement("canvas");
 
@@ -45,8 +38,8 @@ Object.extend(Graphic.CanvasRenderer.prototype, {
     this.element.parentNode.removeChild(this.element);    
   },
     
-  setSize: function(width, height) { 
-    this._parentSetSize(width, height);
+  setSize: function($super, width, height) { 
+    $super(width, height);
     this.element.setAttribute("width", this.bounds.w);
     this.element.setAttribute("height", this.bounds.h);      
     this.zoom(this.viewing.sx, this.viewing.sy)
@@ -176,8 +169,7 @@ Object.extend(Graphic.CanvasRenderer.prototype, {
   
 });
 
-CanvasRect = Class.create();
-CanvasRect.prototype =  {
+CanvasRect = Class.create({
   initialize: function(shape) {
     this.shape = shape;
   },
@@ -209,10 +201,9 @@ CanvasRect.prototype =  {
     var a = this.shape.attributes;
     return a.x <= pt.x && pt.x <= a.x + a.width && a.y <= pt.y && pt.y <= a.y + a.height;
   }
-}
+});
 
-CanvasEllipse = Class.create();
-CanvasEllipse.prototype =  {
+CanvasEllipse = Class.create({
   initialize: function(shape) {
     this.shape = shape;
   },
@@ -244,13 +235,13 @@ CanvasEllipse.prototype =  {
     }
     context.restore();
   },
+  
   pick: function(x, y) {     
     return false;
   }
-}
+});
 
-CanvasCircle = Class.create();
-CanvasCircle.prototype =  {
+CanvasCircle = Class.create({
   initialize: function(shape) {
     this.shape = shape;
   },
@@ -276,10 +267,9 @@ CanvasCircle.prototype =  {
   pick: function(x, y) {     
     return false;
   } 
-}
+});
 
-CanvasPolygon = Class.create();
-CanvasPolygon.prototype =  {
+CanvasPolygon = Class.create({
   initialize: function(shape, closed) {
     this.shape = shape;
     this.closed = closed;
@@ -314,10 +304,9 @@ CanvasPolygon.prototype =  {
   pick: function(x, y) {     
     return false;
   } 
-}
+});
 
-CanvasLine = Class.create();
-CanvasLine.prototype =  {
+CanvasLine = Class.create({
   initialize: function(shape) {
     this.shape = shape;
   },
@@ -341,10 +330,9 @@ CanvasLine.prototype =  {
   pick: function(x, y) {     
     return false;
   } 
-}                    
+});
 
-CanvasImage = Class.create();
-CanvasImage.prototype =  {
+CanvasImage = Class.create({
   initialize: function(shape) {
     this.shape = shape;  
     this.loaded = false;
@@ -373,4 +361,4 @@ CanvasImage.prototype =  {
   pick: function(x, y) {     
     return false;
   } 
-}
+});
